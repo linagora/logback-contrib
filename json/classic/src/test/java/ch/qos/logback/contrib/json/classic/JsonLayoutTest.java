@@ -22,6 +22,7 @@ import ch.qos.logback.core.joran.spi.JoranException;
 import org.junit.Test;
 import org.slf4j.LoggerFactory;
 
+import java.time.Instant;
 import java.util.*;
 
 import static org.hamcrest.Matchers.hasKey;
