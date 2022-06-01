@@ -22,7 +22,7 @@
         <version>7</version>
     </parent>
 
-    <groupId>ch.qos.logback.contrib</groupId>
+    <groupId>com.linagora</groupId>
     <artifactId>logback-contrib-parent</artifactId>
     <packaging>pom</packaging>
     <version>0.1.6-SNAPSHOT</version>
@@ -33,6 +33,9 @@
         Logback Contrib provides community-driven and supported
         extensions to the Logback logging framework. All contributions
         are made by contributors with CLA on file.
+
+        Linagora fork as the main library is unmaintained. Upgrades dependencies, uses
+        java.time, uses more efficient Jackson primitives.
     </description>
     <inceptionYear>2012</inceptionYear>
 
@@ -96,10 +99,6 @@
     <modules>
         <module>json</module>
         <module>jackson</module>
-        <module>mongodb</module>
-        <module>eclipse</module>
-        <module>janino-fragment</module>
-        <module>xmpp</module>
     </modules>
 
     <properties>
@@ -108,7 +107,6 @@
         <!-- Compile Dependencies: -->
         <logback.version>1.2.11</logback.version>
         <jackson.version>2.13.3</jackson.version>
-        <mongo-java-driver.version>2.10.1</mongo-java-driver.version>
         <maven.javadoc.failOnError>false</maven.javadoc.failOnError>
 
         <!-- Test Dependencies: -->
@@ -184,12 +182,6 @@
                 <version>${jackson.version}</version>
                 <scope>provided</scope>
             </dependency>
-            <dependency>
-                <groupId>org.mongodb</groupId>
-                <artifactId>mongo-java-driver</artifactId>
-                <version>${mongo-java-driver.version}</version>
-            </dependency>
-
         </dependencies>
 
     </dependencyManagement>
