@@ -28,9 +28,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
  * @since 0.1
  */
 public class JacksonJsonFormatter implements JsonFormatter {
-
-    public static final int BUFFER_SIZE = 512;
-
     private ObjectMapper objectMapper;
     private boolean prettyPrint;
 
@@ -41,18 +38,11 @@ public class JacksonJsonFormatter implements JsonFormatter {
 
     @Override
     public String toJsonString(Map m) throws IOException {
-        StringWriter writer = new StringWriter(BUFFER_SIZE);
-        JsonGenerator generator = this.objectMapper.getFactory().createJsonGenerator(writer);
-
         if (isPrettyPrint()) {
-            generator.useDefaultPrettyPrinter();
+            return this.objectMapper.writerWithDefaultPrettyPrinter()
+                .writeValueAsString(m);
         }
-
-        this.objectMapper.writeValue(generator, m);
-
-        writer.flush();
-
-        return writer.toString();
+        return this.objectMapper.writeValueAsString(m);
     }
 
     public ObjectMapper getObjectMapper() {
